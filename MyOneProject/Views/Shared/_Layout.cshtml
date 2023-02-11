@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    @await Html.PartialAsync("Partials/MetaTagsPartial")
+    @await Html.PartialAsync("Partials/CssPartial")
+</head>
+<body>
+    <header>
+        @await Html.PartialAsync("Partials/HeaderPartial")
+    </header>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        @await Html.PartialAsync("Partials/FooterPartial")
+    </footer>
+    
+    @await Html.PartialAsync("Partials/Scripts")
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
