@@ -1,0 +1,33 @@
+﻿@model MyOneProject.Domain.Entities.TextField
+@{
+    string title = "Редактировать запись";
+    ViewBag.Title = title;
+}
+
+<div>
+    <h1>@title</h1>
+
+    <div>
+        <form asp-area="Admin" asp-controller="TextFields" asp-action="Edit" method="post" enctype="multipart/form-data">
+            <input type="hidden" asp-for="Id"/>
+            <input type="hidden" asp-for="DateAdded"/>
+            <input type="hidden" asp-for="CodeWord"/>
+
+            <div>
+                <label asp-for="Title"></label>
+                <input asp-for="Title"/>
+                <span asp-validation-for="Title"></span>
+            </div>
+
+            <div>
+                <label asp-for="Description"></label>
+                <textarea asp-for="Description"></textarea>
+                <span asp-validation-for="Description"></span>
+            </div>
+
+            <input type="submit" value="Сохранить"/>
+        </form>
+    </div>
+</div>
+
+

@@ -1,0 +1,44 @@
+﻿@model MyOneProject.Domain.Entities.ServiceItem
+@{
+    string title = "Редактировать услугу";
+    ViewBag.Title = title;
+}
+
+<div>
+    <h1>@title</h1>
+
+    <div>
+        <form asp-area="Admin" asp-controller="ServiceItems" asp-action="Edit" method="post" enctype="multipart/form-data">
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="DateAdded" />
+            <input type="hidden" asp-for="TitleImagePath" />
+
+            <div asp-validation-summary="All"></div>
+            <div class="div-box">
+                <label asp-for="Title"></label>
+                <input asp-for="Title" />
+                <span asp-validation-for="Title"></span>
+            </div>
+            <div class="div-box">
+                <label asp-for="SubTitle"></label>
+                <input asp-for="SubTitle" />
+                <span asp-validation-for="SubTitle"></span>
+            </div>
+            <div class="div-box">
+                <label asp-for="Description"></label>
+                <textarea asp-for="Description"></textarea>
+                <span asp-validation-for="Description"></span>
+            </div>
+            <div class="div-box">
+                <label asp-for="TitleImagePath"></label>
+                <input type="file" name="titleImageFile" id="titleImageFile" />
+                <div>
+                    <img class="img-block" src="~/images/@Model.TitleImagePath" />
+                </div>
+            </div>
+            <input type="submit" value="Сохранить" />
+        </form>
+    </div>
+</div>
+
+

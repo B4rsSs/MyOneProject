@@ -1,0 +1,19 @@
+﻿@using MyOneProject.Domain.Entities;
+
+@model ServiceItem
+
+@{
+    ViewData["Title"] = "Show";
+}
+
+<div>
+    <h2>@Model.Title</h2>
+    <h3>@Model.SubTitle</h3>
+    <div>
+        <img src="~/images/@Model.TitleImagePath" width="200" height="200" />
+    </div>
+</div>
+<div>
+    @Html.Raw(Model.Description)
+</div>
+

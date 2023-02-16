@@ -1,0 +1,30 @@
+﻿@using MyOneProject.Domain.Entities;
+
+@model IQueryable<ServiceItem>
+
+@{
+    ViewData["Title"] = "Index";
+
+    TextField textField = ViewBag.TextField;
+
+    ViewBag.Title = textField.Title;
+}
+
+<div>
+    @if (Model.Any())
+    {
+        <ul>
+            @foreach (ServiceItem entity in Model)
+            {
+                <li>
+                    <a asp-area="" asp-controller="Services" asp-action="Index" asp-route-id="@entity.Id">
+                        <img src="~/images/@entity.TitleImagePath" width="200" height="200">
+                    </a>
+                    <h4>@entity.Title</h4>
+                    <p>@entity.SubTitle</p>
+                </li>
+            }
+        </ul>
+    }
+</div>
+

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MyOneProject.Domain;
 using MyOneProject.Models;
 using System.Diagnostics;
 
@@ -6,21 +7,21 @@ namespace MyOneProject.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly DataManager _dataManager;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(DataManager dataManager)
         {
-            _logger = logger;
+            _dataManager = dataManager;
         }
 
         public IActionResult Index()
         {
-            return View();
+            return View(_dataManager.TextField.GetTextFieldbyName("PageIndex"));
         }
 
-        public IActionResult Privacy()
+        public IActionResult Contacts()
         {
-            return View();
+            return View(_dataManager.TextField.GetTextFieldbyName("PageContacts"));
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
